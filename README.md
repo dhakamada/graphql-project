@@ -75,7 +75,7 @@ $ npm run start
 ```
 
 ### Playground
-When you already started the service, you can access the playgraound on `http://localhost:4000/`
+When you're already with the service up, you can access the playground at `http://localhost:4000/`
 
 ##### Query language
 
