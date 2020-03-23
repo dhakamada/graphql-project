@@ -1,0 +1,36 @@
+{
+  "name": "graphql-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r dotenv/config -r esm --ext js,graphql index.js",
+    "start-worker": "node -r esm -r dotenv/config src/components/smartmei/jobs/index.js",
+    "test": "NODE_ENV=test jest --colors --testTimeout=5000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.11.0",
+    "axios": "^0.19.2",
+    "bignumber.js": "^9.0.0",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "graphql": "^14.6.0",
+    "graphql-import": "^1.0.1",
+    "ioredis": "^4.16.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.28",
+    "node-cron": "^2.0.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^25.1.0",
+    "jest-esm-transformer": "^1.0.0",
+    "nodemon": "^2.0.2",
+    "npm": "^6.14.3"
+  }
+}

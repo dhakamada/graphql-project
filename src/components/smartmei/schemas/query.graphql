@@ -1,0 +1,11 @@
+type CommercialPlan {
+  queryDate: String
+  description: String
+  realPrice: String
+  usdPrice: String
+  eurPrice: String
+}
+
+type Query {
+  fetchCommercialPlan(site: String!): CommercialPlan
+}

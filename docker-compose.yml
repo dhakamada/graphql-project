@@ -1,0 +1,41 @@
+version: '3'
+services:
+  redis:
+    container_name: graphql-redis
+    image: redis:latest
+    networks:
+      - graphql-network
+    expose:
+      - 6379
+    ports:
+      - "6379:6379"
+
+  graphql-worker:
+    container_name: graphql-worker
+    networks:
+      - graphql-network
+    build:
+      dockerfile: ./docker/worker.dockerfile
+      context: .
+    image: dhakamada/graphql-worker
+    depends_on:
+      - redis
+
+  graphql-service:
+    container_name: graphql-service
+    networks:
+      - graphql-network
+    build:
+      dockerfile: ./docker/service.dockerfile
+      context: .
+    image: dhakamada/graphql-service
+    ports:
+      - '4000:4000'
+    depends_on:
+      - redis
+      - graphql-worker
+
+networks:
+  graphql-network:
+    driver: 'bridge'
+  
