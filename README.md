@@ -16,13 +16,12 @@ Because I believe that this way the application can scale horizontally and will 
 
 **Disadvantage**
 * don't have the date in real-time;
-* need more infrastructure;
-* "more cost".
+* need more infrastructure.
 
 **Benefits**
-* support more throughput, because using the cache service instead of requesting data in real time, you don't have to crawler SmartMEI and exchange site;
-* improves the customer UX, because the redis response is faster;
-* if Smartmei or exchange site is out/down, cache service will return the last rate obtained;
+* support more throughput, because if you are using the cache service instead of requesting data in real time, you don't have to crawler SmartMEI and exchange website (more latency/IO);
+* improves the customer UX, because the redis response is faster than consume websites;
+* if Smartmei or exchange site is down, cache service will return the rate stored;
 * the heavy process will be in the background (worker);
 * worker can be configured to run the process as needed.
 
@@ -40,7 +39,7 @@ $ npm test
 ```
 
 ### Development
-Service can be run via **Docker** ou **Local**.
+Service can be run via **Docker** or **Local**.
 
 #### Docker
 Run the command below on your terminal.
@@ -50,10 +49,10 @@ $ docker-compose up
 ```
 
 #### Local
-To run the service and worker on your machine, you need node and redis instaled.
+To run the service and worker on your machine, you need Node and Redis instaled.
 
 **Steps:**
-> Up the redis service. If you would like use redis on docker
+> Up the redis service. But if you would like to use redis on docker
 ```sh
 $ docker run -p 6379:6379 redis
 ```
@@ -75,11 +74,11 @@ $ npm run start
 ```
 
 ### Playground
-When you're already with the service up, you can access the playground at `http://localhost:4000/`
+When you're already with service up, you can access the playground at `http://localhost:4000/`
 
-##### Query language
+#### Query language
 
-*Input*
+Input
 ```javascript
 {
   fetchCommercialPlan(site: "https://www.smartmei.com.br/#planos-e-tarifas") {
@@ -92,7 +91,7 @@ When you're already with the service up, you can access the playground at `http:
 }
 ```
 
-*Response*
+Response
 ```javascript
 {
   "data": {
